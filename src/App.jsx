@@ -138,6 +138,55 @@ function ProcessCard({ step, delay = 0 }) {
   )
 }
 
+function HeroVideoCard({ reducedMotion }) {
+  return (
+    <div className={reducedMotion ? 'hero-video-card is-reduced' : 'hero-video-card hero-intro'}>
+      <div className="hero-video-frame reveal-card" data-reveal style={{ '--reveal-delay': '220ms' }}>
+        <div className="hero-video-label">REAL WORK IN ACTION</div>
+        <div className="hero-video-shell">
+          {reducedMotion ? (
+            <a
+              className="hero-video-thumb-link"
+              href={featuredVideo.watchUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open Square One Roof Works roofing work video"
+            >
+              <img
+                className="hero-video-thumb"
+                src={featuredVideo.thumbnail}
+                alt="Square One Roof Works roofing work video thumbnail"
+                width="1280"
+                height="720"
+              />
+              <span className="hero-video-play" aria-hidden="true">
+                Watch Video
+              </span>
+            </a>
+          ) : (
+            <iframe
+              className="hero-video-iframe"
+              src={featuredVideo.embedUrl}
+              title="Square One Roof Works roofing work video"
+              loading="eager"
+              allow="autoplay; encrypted-media; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+          )}
+        </div>
+        <div className="hero-video-meta">
+          <p>Watch real roofing work from Square One Roof Works.</p>
+          <a href={businessInfo.phoneHref}>Call for Free Quote</a>
+        </div>
+      </div>
+      <div className="hero-video-badge reveal-card" data-reveal style={{ '--reveal-delay': '300ms' }}>
+        Owner-Operated • Local Roofing
+      </div>
+    </div>
+  )
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [headerScrolled, setHeaderScrolled] = useState(false)
@@ -336,6 +385,7 @@ function App() {
                 <span>24-Hour Emergency Service</span>
               </div>
             </div>
+            <HeroVideoCard reducedMotion={reducedMotion} />
           </div>
         </section>
 

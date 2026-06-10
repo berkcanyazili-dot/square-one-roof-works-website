@@ -20,8 +20,11 @@ export const photoSrc = {
 }
 
 export const featuredVideo = {
-  embedUrl: 'https://www.youtube.com/embed/Ii7-Al-CiwA',
+  embedUrl:
+    'https://www.youtube.com/embed/Ii7-Al-CiwA?autoplay=1&mute=1&playsinline=1&loop=1&playlist=Ii7-Al-CiwA&controls=0&rel=0&modestbranding=1',
   title: 'Square One Roof Works roofing video',
+  thumbnail: 'https://img.youtube.com/vi/Ii7-Al-CiwA/hqdefault.jpg',
+  watchUrl: 'https://youtu.be/Ii7-Al-CiwA?si=wsZDn_zF7Z20WDZ8',
   eyebrow: 'Our work',
   heading: 'See Square One Roof Works in Action',
   subtitle:
