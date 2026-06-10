@@ -142,6 +142,7 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [headerScrolled, setHeaderScrolled] = useState(false)
   const [formStatus, setFormStatus] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const reducedMotion = useRevealObserver()
   const [statsStarted, setStatsStarted] = useState(false)
   const statsSectionRef = useRef(null)
@@ -201,6 +202,7 @@ function App() {
 
   const handleQuoteSubmit = (event) => {
     event.preventDefault()
+    setFormStatus('')
 
     const formData = new FormData(event.currentTarget)
     const name = (formData.get('name') || '').toString().trim()
@@ -210,24 +212,36 @@ function App() {
     const serviceNeeded = (formData.get('serviceNeeded') || '').toString().trim()
     const description = (formData.get('description') || '').toString().trim()
 
-    const subject = encodeURIComponent(`Free Roof Inspection Request - ${name || 'Website Lead'}`)
-    const body = encodeURIComponent(
-      [
-        'Square One Roof Works website lead',
-        '',
-        `Name: ${name || 'Not provided'}`,
-        `Phone: ${phone || 'Not provided'}`,
-        `Email: ${email || 'Not provided'}`,
-        `Property Address: ${propertyAddress || 'Not provided'}`,
-        `Service Needed: ${serviceNeeded || 'Not provided'}`,
-        '',
-        'Project Details:',
-        description || 'Not provided',
-      ].join('\n'),
-    )
+    setIsSubmitting(true)
 
-    window.location.href = `mailto:${businessInfo.email}?subject=${subject}&body=${body}`
-    setFormStatus(`Your email app should open a message addressed to ${businessInfo.email}.`)
+    fetch('/api/request-inspection', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        phone,
+        email,
+        propertyAddress,
+        serviceNeeded,
+        description,
+        company: (formData.get('company') || '').toString(),
+      }),
+    })
+      .then(async (response) => {
+        if (!response.ok) {
+          const payload = await response.json().catch(() => ({}))
+          throw new Error(payload.error || 'Unable to submit your inspection request.')
+        }
+
+        event.currentTarget.reset()
+        setFormStatus(`Request sent. ${businessInfo.name} will review your form submission shortly.`)
+      })
+      .catch((error) => {
+        setFormStatus(error instanceof Error ? error.message : 'Unable to submit your inspection request.')
+      })
+      .finally(() => {
+        setIsSubmitting(false)
+      })
   }
 
   return (
@@ -630,6 +644,14 @@ function App() {
                 Name
                 <input name="name" type="text" autoComplete="name" placeholder="Name" required />
               </label>
+              <input
+                className="form-honeypot"
+                name="company"
+                type="text"
+                tabIndex="-1"
+                autoComplete="off"
+                aria-hidden="true"
+              />
               <label>
                 Phone
                 <input name="phone" type="tel" autoComplete="tel" placeholder="Phone" required />
@@ -668,13 +690,12 @@ function App() {
                   required
                 ></textarea>
               </label>
-              <button className="button red full-width" type="submit">
-                Request Free Inspection
+              <button className="button red full-width" type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending Request...' : 'Request Free Inspection'}
               </button>
               {formStatus ? <p className="form-status">{formStatus}</p> : null}
               <p className="form-support-copy">
-                Need faster help? Call <a href={businessInfo.phoneHref}>{businessInfo.phone}</a>. Form
-                submissions open an email to {businessInfo.email}.
+                Need faster help? Call <a href={businessInfo.phoneHref}>{businessInfo.phone}</a>.
               </p>
             </form>
           </div>
