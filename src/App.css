@@ -240,8 +240,8 @@
 
 .hero-section {
   position: relative;
-  min-height: 670px;
-  padding: 116px 0 190px;
+  min-height: 0;
+  padding: 84px 0 128px;
   overflow: hidden;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.86) 42%, rgba(255, 255, 255, 0.12) 70%),
@@ -251,10 +251,10 @@
 
 .hero-section::after {
   position: absolute;
-  right: -7vw;
+  right: -3vw;
   bottom: 0;
-  width: min(760px, 62vw);
-  height: 520px;
+  width: min(660px, 55vw);
+  height: 420px;
   content: '';
   background:
     linear-gradient(145deg, rgba(20, 27, 35, 0.04), rgba(20, 27, 35, 0.18)),
@@ -268,10 +268,10 @@
 
 .hero-section::before {
   position: absolute;
-  right: 7vw;
-  bottom: 94px;
-  width: 250px;
-  height: 170px;
+  right: 5vw;
+  bottom: 76px;
+  width: 210px;
+  height: 138px;
   content: '';
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.94)),
@@ -283,7 +283,7 @@
 .hero-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 560px);
-  gap: clamp(28px, 5vw, 64px);
+  gap: clamp(20px, 4vw, 42px);
   align-items: center;
   position: relative;
   z-index: 2;
@@ -295,16 +295,16 @@
 
 .hero-video-card {
   display: grid;
-  gap: 12px;
+  gap: 10px;
   align-self: center;
   justify-self: end;
-  width: min(100%, 560px);
+  width: min(100%, 520px);
 }
 
 .hero-video-frame {
   display: grid;
-  gap: 12px;
-  padding: 14px;
+  gap: 10px;
+  padding: 12px;
   background: linear-gradient(180deg, rgba(16, 20, 26, 0.92), rgba(16, 20, 26, 0.88));
   border: 1px solid rgba(237, 30, 43, 0.24);
   border-radius: 18px;
@@ -316,7 +316,7 @@
 .hero-video-label {
   display: inline-flex;
   width: fit-content;
-  padding: 8px 12px;
+  padding: 7px 11px;
   color: #fff;
   font-size: 0.73rem;
   font-weight: 950;
@@ -385,15 +385,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
   color: #d8dee5;
 }
 
 .hero-video-meta p {
   margin: 0;
   color: #d8dee5;
-  font-size: 0.92rem;
-  line-height: 1.45;
+  font-size: 0.88rem;
+  line-height: 1.4;
 }
 
 .hero-video-meta a {
@@ -406,7 +406,7 @@
 
 .hero-video-badge {
   width: fit-content;
-  padding: 10px 14px;
+  padding: 9px 13px;
   color: #fff;
   font-size: 0.86rem;
   font-weight: 900;
@@ -527,7 +527,7 @@ h3 {
 }
 
 .hero-trust span {
-  padding: 10px 13px;
+  padding: 8px 12px;
   color: var(--ink);
   font-weight: 900;
   background: rgba(255, 255, 255, 0.88);
@@ -541,8 +541,8 @@ h3 {
 .hero-card-section {
   position: relative;
   z-index: 5;
-  margin-top: -118px;
-  padding-bottom: 78px;
+  margin-top: -70px;
+  padding: 0 0 52px;
 }
 
 .hero-card-grid {
@@ -553,17 +553,17 @@ h3 {
 
 .hero-service-card {
   display: flex;
-  min-height: 230px;
+  min-height: 214px;
   flex-direction: column;
-  padding: 32px;
+  padding: 28px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 22px 45px rgba(14, 21, 29, 0.12);
 }
 
 .hero-service-card h2 {
-  margin-bottom: 10px;
-  font-size: 1.42rem;
+  margin-bottom: 8px;
+  font-size: 1.34rem;
 }
 
 .hero-service-card p,
@@ -1533,7 +1533,7 @@ address {
 
   .nav-shell {
     grid-template-columns: 1fr auto;
-    min-height: 90px;
+    min-height: 78px;
     padding-right: 12px;
   }
 
@@ -1650,6 +1650,10 @@ address {
     --motion-base: 320ms;
   }
 
+  .top-bar {
+    display: none;
+  }
+
   .container {
     width: min(100% - 28px, 1140px);
   }
@@ -1668,21 +1672,21 @@ address {
 
   .site-header {
     position: relative;
-    padding-bottom: 10px;
+    padding-bottom: 6px;
   }
 
   .nav-shell {
-    min-height: 68px;
+    min-height: 64px;
     border-radius: 0 0 7px 7px;
   }
 
   .brand {
-    min-height: 88px;
-    padding: 6px 10px;
+    min-height: 74px;
+    padding: 5px 8px;
   }
 
   .brand-logo {
-    width: 124px;
+    width: 112px;
   }
 
   .footer-logo {
@@ -1691,17 +1695,41 @@ address {
 
   .hero-section {
     min-height: auto;
-    padding: 46px 0 126px;
+    padding: 26px 0 72px;
   }
 
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 22px;
+    gap: 14px;
   }
 
   .hero-video-card {
     justify-self: stretch;
     width: 100%;
+    gap: 8px;
+  }
+
+  .hero-video-frame {
+    padding: 10px;
+    border-radius: 16px;
+  }
+
+  .hero-video-label {
+    padding: 6px 10px;
+    font-size: 0.68rem;
+  }
+
+  .hero-video-meta {
+    gap: 8px;
+  }
+
+  .hero-video-meta p {
+    font-size: 0.84rem;
+  }
+
+  .hero-video-badge {
+    font-size: 0.8rem;
+    padding: 8px 11px;
   }
 
   .hero-video-meta {
@@ -1710,15 +1738,16 @@ address {
   }
 
   .hero-video-play {
-    right: 12px;
-    bottom: 12px;
+    right: 10px;
+    bottom: 10px;
+    padding: 9px 12px;
   }
 
   .hero-section::after {
-    right: -150px;
-    width: 480px;
-    height: 270px;
-    opacity: 0.42;
+    right: -230px;
+    width: 360px;
+    height: 200px;
+    opacity: 0.34;
   }
 
   .hero-section::before {
@@ -1752,17 +1781,17 @@ address {
 
   .hero-trust {
     gap: 8px;
-    margin-top: 20px;
+    margin-top: 14px;
   }
 
   .hero-trust span {
-    padding: 8px 10px;
-    font-size: 0.86rem;
+    padding: 7px 10px;
+    font-size: 0.83rem;
   }
 
   .hero-card-section {
-    margin-top: -78px;
-    padding-bottom: 46px;
+    margin-top: -24px;
+    padding: 0 0 28px;
   }
 
   .hero-card-grid,
@@ -1779,7 +1808,7 @@ address {
   .hero-service-card,
   .service-card {
     min-height: auto;
-    padding: 22px;
+    padding: 18px;
   }
 
   .line-icon {
@@ -1831,28 +1860,32 @@ address {
     height: 250px;
   }
 
-  .service-area-image {
-    height: 240px;
-    object-position: center 24%;
+  .stats-section {
+    padding: 52px 0;
   }
 
-  .stats-section {
-    padding: 64px 0;
+  .stats-grid {
+    gap: 14px;
   }
 
   .stat-card {
+    padding: 18px 16px;
     min-height: auto;
-    padding: 20px 18px;
   }
 
   .stat-card strong {
-    margin-top: 14px;
-    font-size: 1.25rem;
+    margin-top: 12px;
+    font-size: 1.16rem;
   }
 
   .stat-card span {
-    max-width: none;
-    font-size: 0.9rem;
+    font-size: 0.86rem;
+  }
+
+  .service-area-image {
+    height: 220px;
+    object-position: center 24%;
+    margin-top: 18px;
   }
 
   .video-embed-shell {
@@ -1870,17 +1903,17 @@ address {
   }
 
   .booking-form {
-    padding: 22px;
+    padding: 18px;
   }
 
   .footer-grid {
-    gap: 18px;
-    padding: 26px 0;
+    gap: 16px;
+    padding: 22px 0;
   }
 
   .footer-top {
-    gap: 12px;
-    padding: 24px 0;
+    gap: 10px;
+    padding: 20px 0;
   }
 
   .footer-brand {
@@ -1907,7 +1940,7 @@ address {
   }
 
   .footer-bottom {
-    padding: 14px 22px 18px;
+    padding: 12px 18px 16px;
     font-size: 0.86rem;
   }
 }
