@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import {
   businessInfo,
@@ -10,7 +10,7 @@ import {
   photoSrc,
   processSteps,
   projectPlaceholders,
-  reviewFields,
+  trustReviewCards,
   serviceAreas,
   services,
   trustBullets,
@@ -138,6 +138,19 @@ function ProcessCard({ step, delay = 0 }) {
   )
 }
 
+function TrustReviewCard({ card, delay = 0 }) {
+  return (
+    <article className="trust-review-card reveal-card" data-reveal style={{ '--reveal-delay': `${delay}ms` }}>
+      <div className="trust-review-card-top">
+        <Icon icon={card.icon} />
+        <span className="trust-review-service">{card.service}</span>
+      </div>
+      <h3>{card.title}</h3>
+      <p>{card.text}</p>
+    </article>
+  )
+}
+
 function HeroVideoCard({ reducedMotion }) {
   return (
     <div className={reducedMotion ? 'hero-video-card is-reduced' : 'hero-video-card hero-intro'}>
@@ -181,7 +194,7 @@ function HeroVideoCard({ reducedMotion }) {
         </div>
       </div>
       <div className="hero-video-badge reveal-card" data-reveal style={{ '--reveal-delay': '300ms' }}>
-        Owner-Operated • Local Roofing
+        Owner-Operated â€¢ Local Roofing
       </div>
     </div>
   )
@@ -195,6 +208,7 @@ function App() {
   const reducedMotion = useRevealObserver()
   const [statsStarted, setStatsStarted] = useState(false)
   const statsSectionRef = useRef(null)
+  const realProjects = projectPlaceholders.filter((project) => Boolean(project.image))
 
   useEffect(() => {
     const handleScroll = () => setHeaderScrolled(window.scrollY > 14)
@@ -329,12 +343,15 @@ function App() {
             type="button"
             aria-expanded={menuOpen}
             aria-controls="primary-navigation"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             onClick={() => setMenuOpen((open) => !open)}
           >
-            <span></span>
-            <span></span>
-            <span></span>
-            Menu
+            <span className="menu-toggle-lines" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+            <span className="menu-toggle-label">Menu</span>
           </button>
 
           <nav
@@ -566,11 +583,15 @@ function App() {
               </div>
               <p>Project photos will be updated soon.</p>
             </div>
-            <div className="project-grid">
-              {projectPlaceholders.map((project, index) => (
-                <ProjectCard key={`${project.service}-${project.location}`} project={project} index={index} />
-              ))}
-            </div>
+            {realProjects.length ? (
+              <div className="project-grid">
+                {realProjects.map((project, index) => (
+                  <ProjectCard key={`${project.service}-${project.location}`} project={project} index={index} />
+                ))}
+              </div>
+            ) : (
+              <p className="empty-state">Project photos coming soon.</p>
+            )}
           </div>
         </section>
 
@@ -635,21 +656,31 @@ function App() {
 
         <section className="section reviews-section" id="reviews">
           <div className="container reviews-grid">
-            <div className="review-visual reveal-card" data-reveal role="img" aria-label="Roofing project placeholder image"></div>
-            <div className="section-copy reveal-card" data-reveal style={{ '--reveal-delay': '70ms' }}>
-              <p className="kicker">Reviews</p>
-              <h2>Customer Testimonials Will Be Added Soon</h2>
+            <div className="section-copy reveal-card" data-reveal>
+              <p className="kicker">Trust and reviews</p>
+              <h2>What Customers Can Expect</h2>
               <p>
-                This section is ready for real customer feedback without pretending proof exists
-                today. When reviews are available, each testimonial can include the customer name,
-                town, service type, review text, and star rating.
+                Honest roofing service, clear communication, and hands-on workmanship for homes and
+                businesses across Watertown, Fort Drum, and the surrounding tri-county area.
               </p>
-              <div className="review-template-grid" aria-label="Future testimonial fields">
-                {reviewFields.map((field, index) => (
-                  <div className="review-template-card" key={field} data-reveal style={{ '--reveal-delay': `${index * 40}ms` }}>
-                    {field}
-                  </div>
+              <div className="review-template-grid" aria-label="Trust review fields">
+                {trustReviewCards.map((card, index) => (
+                  <TrustReviewCard key={card.title} card={card} delay={index * 50} />
                 ))}
+              </div>
+              <div className="trust-cta">
+                <strong>Need honest roofing advice?</strong>
+                <a className="button red" href={businessInfo.phoneHref}>
+                  Call for Free Quote
+                </a>
+              </div>
+            </div>
+            <div className="review-visual reveal-card" data-reveal style={{ '--reveal-delay': '70ms' }}>
+              <div className="review-visual-inner">
+                <div className="stars" aria-hidden="true">
+                  ★★★★☆
+                </div>
+                <p>Honest roofing service. Clear expectations. No fake review claims.</p>
               </div>
             </div>
           </div>
@@ -801,7 +832,7 @@ function App() {
           </div>
         </div>
         <div className="footer-bottom">
-          <span>© 2026 {businessInfo.name}. All rights reserved.</span>
+          <span>Â© 2026 {businessInfo.name}. All rights reserved.</span>
         </div>
       </footer>
 
@@ -813,3 +844,4 @@ function App() {
 }
 
 export default App
+

@@ -228,6 +228,27 @@ export const processSteps = [
 
 export const reviewFields = ['Customer name', 'Town', 'Service type', 'Review text', 'Star rating']
 
+export const trustReviewCards = [
+  {
+    icon: { src: iconSrc.badge, alt: 'Clear roof inspections icon' },
+    title: 'Clear Roof Inspections',
+    service: 'Free Inspections',
+    text: 'We take the time to inspect the roof, explain what we see, and recommend practical next steps without pressure.',
+  },
+  {
+    icon: { src: iconSrc.tools, alt: 'Honest repair options icon' },
+    title: 'Honest Repair Options',
+    service: 'Roof Repairs',
+    text: 'From small leaks to storm damage, Square One Roof Works focuses on straightforward repair solutions and dependable workmanship.',
+  },
+  {
+    icon: { src: iconSrc.panel, alt: 'Built to last icon' },
+    title: 'Built to Last',
+    service: 'Roof Replacements',
+    text: 'For full replacements, metal roofing, shingle roofing, and rubber roofing, the goal is simple: do it right the first time.',
+  },
+]
+
 export const footerServices = [
   'Free Roof Inspections',
   'Roof Repairs',
