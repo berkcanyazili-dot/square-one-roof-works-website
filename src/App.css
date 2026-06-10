@@ -1130,24 +1130,41 @@ h3 {
 }
 
 .review-visual-inner {
+  position: relative;
   display: grid;
-  align-content: center;
-  gap: 16px;
   min-height: 100%;
-  padding: clamp(24px, 4.5vw, 40px);
-  color: #fff;
-  background:
-    linear-gradient(180deg, rgba(14, 21, 29, 0.12), rgba(14, 21, 29, 0.76)),
-    radial-gradient(circle at top, rgba(237, 30, 43, 0.26), transparent 46%),
-    repeating-linear-gradient(115deg, #c95132 0 16px, #a93622 16px 22px, #e98a52 22px 34px);
+  overflow: hidden;
   border-radius: 14px;
   box-shadow: 0 22px 46px rgba(14, 21, 29, 0.16);
 }
 
-.review-visual-inner p {
+.review-visual-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 34%;
+}
+
+.review-visual-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: end;
+  gap: 12px;
+  min-height: 100%;
+  padding: clamp(22px, 4vw, 38px);
+  color: #fff;
+  background:
+    linear-gradient(180deg, rgba(14, 21, 29, 0.12), rgba(14, 21, 29, 0.76)),
+    linear-gradient(135deg, rgba(14, 21, 29, 0.1), rgba(14, 21, 29, 0.56));
+}
+
+.review-visual-content p {
   margin: 0;
-  max-width: 22ch;
-  font-size: clamp(1.08rem, 1.8vw, 1.55rem);
+  max-width: 18ch;
+  font-size: clamp(1.06rem, 1.8vw, 1.45rem);
   font-weight: 900;
   line-height: 1.18;
 }
@@ -1208,13 +1225,14 @@ h3 {
 
 .trust-review-card h3 {
   margin-bottom: 0;
-  font-size: 1.1rem;
+  font-size: 1.02rem;
+  line-height: 1.15;
 }
 
 .trust-review-card p {
   color: var(--muted);
-  font-size: 0.96rem;
-  line-height: 1.62;
+  font-size: 0.93rem;
+  line-height: 1.58;
 }
 
 .trust-cta {
@@ -1953,6 +1971,15 @@ address {
   .why-image {
     min-height: 250px;
     height: 250px;
+  }
+
+  .review-visual-content {
+    padding: 18px;
+  }
+
+  .review-visual-content p {
+    max-width: 16ch;
+    font-size: 1.02rem;
   }
 
   .trust-cta {

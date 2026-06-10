@@ -677,10 +677,19 @@ function App() {
             </div>
             <div className="review-visual reveal-card" data-reveal style={{ '--reveal-delay': '70ms' }}>
               <div className="review-visual-inner">
-                <div className="stars" aria-hidden="true">
-                  ★★★★☆
+                <img
+                  className="review-visual-photo"
+                  src={photoSrc.metalRoofService}
+                  alt="Square One Roof Works roofing project"
+                  width="1152"
+                  height="1536"
+                />
+                <div className="review-visual-content">
+                  <div className="stars" aria-hidden="true">
+                    ★★★★☆
+                  </div>
+                  <p>Honest roofing service. Clear expectations. No fake review claims.</p>
                 </div>
-                <p>Honest roofing service. Clear expectations. No fake review claims.</p>
               </div>
             </div>
           </div>
