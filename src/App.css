@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --motion-fast: 220ms;
   --motion-base: 420ms;
@@ -293,6 +293,10 @@
   max-width: 620px;
 }
 
+.hero-brand-line {
+  display: none;
+}
+
 .hero-video-card {
   display: grid;
   gap: 10px;
@@ -449,14 +453,6 @@
   animation-delay: 360ms;
 }
 
-.hero-brand-line {
-  margin: 0 0 8px;
-  color: var(--red);
-  font-size: 0.95rem;
-  font-weight: 950;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
 
 .kicker {
   display: flex;
@@ -683,7 +679,7 @@ h3 {
   height: 18px;
   place-items: center;
   color: #fff;
-  content: '✓';
+  content: 'âœ“';
   font-size: 0.72rem;
   background: var(--red);
   border-radius: 999px;
@@ -1493,7 +1489,7 @@ address {
 .site-footer li a::before {
   margin-right: 8px;
   color: var(--red);
-  content: '›';
+  content: '"º';
   font-weight: 950;
 }
 
@@ -1817,7 +1813,7 @@ address {
 
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 12px;
   }
 
   .hero-video-card {
@@ -1847,6 +1843,11 @@ address {
   .hero-video-badge {
     font-size: 0.8rem;
     padding: 8px 11px;
+  }
+
+  .hero-video-badge,
+  .hero-video-label {
+    letter-spacing: 0.05em;
   }
 
   .hero-video-meta {
@@ -1907,8 +1908,8 @@ address {
   }
 
   .hero-card-section {
-    margin-top: -24px;
-    padding: 0 0 28px;
+    margin-top: -18px;
+    padding: 0 0 24px;
   }
 
   .hero-card-grid,
@@ -2131,3 +2132,5 @@ address {
     transform: none;
   }
 }
+
+

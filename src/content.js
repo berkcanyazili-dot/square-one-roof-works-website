@@ -1,4 +1,4 @@
-export const businessInfo = {
+﻿export const businessInfo = {
   name: 'Square One Roof Works',
   tagline: 'Do it right the first time',
   phone: '315-778-1485',
@@ -258,3 +258,4 @@ export const footerServices = [
   'Rubber Roofing',
   'Emergency Roof Repair',
 ]
+

@@ -194,7 +194,7 @@ function HeroVideoCard({ reducedMotion }) {
         </div>
       </div>
       <div className="hero-video-badge reveal-card" data-reveal style={{ '--reveal-delay': '300ms' }}>
-        Owner-Operated â€¢ Local Roofing
+        Owner-Operated | Local Roofing
       </div>
     </div>
   )
@@ -381,14 +381,13 @@ function App() {
         <section className="hero-section" id="home">
           <div className="container hero-grid">
             <div className={reducedMotion ? 'hero-copy is-visible' : 'hero-copy hero-intro is-visible'}>
-              <p className="hero-brand-line hero-animate hero-animate-1">{businessInfo.name}</p>
-              <p className="kicker hero-animate hero-animate-2">Roofing company Watertown NY</p>
-              <h1 className="hero-animate hero-animate-3">Quality Roofing Done Right the First Time</h1>
-              <p className="hero-animate hero-animate-4">
+              <p className="kicker hero-animate hero-animate-1">Roofing company Watertown NY</p>
+              <h1 className="hero-animate hero-animate-2">Quality Roofing Done Right the First Time</h1>
+              <p className="hero-animate hero-animate-3">
                 Serving Watertown, Fort Drum, and the surrounding tri-county area with honest roof
                 repairs, free inspections, and full roof replacements.
               </p>
-              <div className="button-row hero-animate hero-animate-5">
+              <div className="button-row hero-animate hero-animate-4">
                 <a className="button red" href={businessInfo.phoneHref}>
                   Call for Free Quote
                 </a>
@@ -396,7 +395,7 @@ function App() {
                   Request Free Inspection
                 </a>
               </div>
-              <div className="hero-trust hero-animate hero-animate-6" aria-label="Trust highlights">
+              <div className="hero-trust hero-animate hero-animate-5" aria-label="Trust highlights">
                 <span>15 Years of Experience</span>
                 <span>Fully Insured</span>
                 <span>24-Hour Emergency Service</span>
@@ -853,4 +852,5 @@ function App() {
 }
 
 export default App
+
 
